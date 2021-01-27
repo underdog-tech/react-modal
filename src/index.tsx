@@ -21,7 +21,12 @@ declare let Pinwheel: {
   close: () => Promise<void>
 }
 
-export const Modal = ({
+export type PinwheelModalProps = PinwheelOpenOptions & {
+  open?: boolean
+  _srcUrl?: string
+}
+
+export const PinwheelModal = ({
   open,
   _srcUrl,
   ...props
@@ -53,5 +58,5 @@ export const Modal = ({
     }
   }, [open, showing, setShowing, loaded])
 
-  return <></>
+  return <div />
 }
