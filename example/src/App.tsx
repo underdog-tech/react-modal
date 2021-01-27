@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PinwheelModal } from '@pinwheel/react-modal'
+import PinwheelModal from '@pinwheel/react-modal'
 import '@pinwheel/react-modal/dist/index.css'
 
 const token = window.location.search.split('token=')[1] ||

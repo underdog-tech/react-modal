@@ -12,18 +12,26 @@ npm install --save @pinwheel/react-modal
 
 ## Usage
 
-```tsx
-import React, { Component } from 'react'
+```jsx
+import PinwheelModal from '@pinwheel/react-modal'
 
-import MyComponent from '@pinwheel/react-modal'
-import '@pinwheel/react-modal/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+const App = () => <PinwheelModal linkToken={token} open={true} onEvent={console.log} />
 ```
+
+Please consult [our docs](https://docs.getpinwheel.com/link/index.html#usage) for more information.
+
+## Quick Start
+
+You may want to explore the usage of the modal locally.
+
+Start by going to the [developer dashboard](https://developer.getpinwheel.com/test-console) to create a token. Copy the token string. Then
+
+```sh
+cd example
+npm i
+npm start
+# Go to localhost:3000?token=<PASTE YOUR GENERATED TOKEN HERE>
+`
 
 ## License
 

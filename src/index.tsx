@@ -26,7 +26,7 @@ export type PinwheelModalProps = PinwheelOpenOptions & {
   _srcUrl?: string
 }
 
-export const PinwheelModal = ({
+const PinwheelModal = ({
   open,
   _srcUrl,
   ...props
@@ -60,3 +60,5 @@ export const PinwheelModal = ({
 
   return <div />
 }
+
+export default PinwheelModal
