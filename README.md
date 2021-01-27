@@ -15,7 +15,13 @@ npm install --save @pinwheel/react-modal
 ```jsx
 import PinwheelModal from '@pinwheel/react-modal'
 
-const App = () => <PinwheelModal linkToken={token} open={true} onEvent={console.log} />
+const App = () => {
+  return <PinwheelModal
+    open={true}
+    linkToken={token}
+    onEvent={console.log}
+  />
+}
 ```
 
 Please consult [our docs](https://docs.getpinwheel.com/link/index.html#usage) for more information.
