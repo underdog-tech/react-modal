@@ -1,0 +1,40 @@
+version: 2.1
+
+orbs:
+  slack: circleci/slack@3.4.2
+
+jobs:
+  publish:
+    docker:
+      - image: circleci/node:12.16.1
+    working_directory: ~/react-modal
+    steps:
+      - checkout
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/react-modal/.npmrc
+      - run:
+          name: NPM Install
+          command: npm install
+      - run: |
+          _NPM_PACKAGE_NAME=$(npm list | head -n 1 | cut -d ' ' -f1)
+          if [[ -z "$(npm info ${_NPM_PACKAGE_NAME} 2> ./test)"  ]]; then
+              echo "version doesnt exist, continuing"
+          else
+              echo "version already exists"
+              circleci-agent step halt
+          fi
+      - run:
+          name: NPM Build
+          command: npm run build
+      - run:
+          name: NPM Publish
+          command: npm publish
+
+workflows:
+  publish:
+    jobs:
+      - publish:
+          filters:
+            branches:
+              only: master
