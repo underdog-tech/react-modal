@@ -26,6 +26,16 @@ export type PinwheelModalProps = PinwheelOpenOptions & {
   _srcUrl?: string
 }
 
+const addScriptTag = (loadCb: Function, url?: string) => {
+  const tag = document.createElement('script')
+  tag.async = true
+  tag.type = 'application/javascript'
+  tag.src = url || 'https://cdn.getpinwheel.com/pinwheel-v1.js'
+  document.body.appendChild(tag)
+
+  tag.addEventListener('load', () => loadCb())
+}
+
 const PinwheelModal = ({
   open,
   _srcUrl,
@@ -38,14 +48,16 @@ const PinwheelModal = ({
   const [showing, setShowing] = React.useState(false)
 
   React.useEffect(() => {
-    const tag = document.createElement('script')
-    tag.async = true
-    tag.type = 'application/javascript'
-    tag.src = _srcUrl || 'https://cdn.getpinwheel.com/pinwheel-v1.js'
-    document.body.appendChild(tag)
-
-    tag.addEventListener('load', () => setLoaded(true))
+    addScriptTag(() => setLoaded(true), _srcUrl)
   }, [setLoaded])
+
+  React.useEffect(() => {
+    // eslint-disable-next-line dot-notation
+    delete window['Pinwheel']
+    setLoaded(false)
+
+    addScriptTag(() => setLoaded(true), _srcUrl)
+  }, [_srcUrl, setLoaded])
 
   React.useEffect(() => {
     if (!loaded) return
