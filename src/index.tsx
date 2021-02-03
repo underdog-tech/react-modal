@@ -61,11 +61,13 @@ const PinwheelModal = ({
     const els = document.querySelectorAll('.pinwheel-portal')
     els.forEach((e) => e.parentNode?.removeChild(e))
 
-    if (tag && tag.parentNode) tag.parentNode.removeChild(tag)
-
     const newTag = addScriptTag(() => setLoaded(true), _srcUrl)
     setTag(newTag)
-  }, [_srcUrl, setLoaded, tag])
+  }, [_srcUrl, setLoaded])
+
+  React.useEffect(() => {
+    if (tag && tag.parentNode) tag.parentNode.removeChild(tag)
+  }, [_srcUrl])
 
   React.useEffect(() => {
     if (!loaded) return
