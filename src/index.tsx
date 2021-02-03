@@ -56,6 +56,9 @@ const PinwheelModal = ({
     delete window['Pinwheel']
     setLoaded(false)
 
+    const els = document.querySelectorAll('.pinwheel-portal')
+    els.forEach((e) => e.parentNode?.removeChild(e))
+
     addScriptTag(() => setLoaded(true), _srcUrl)
   }, [_srcUrl, setLoaded])
 
