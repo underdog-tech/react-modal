@@ -40,6 +40,7 @@ const PinwheelModal = ({
   React.useEffect(() => {
     const tag = document.createElement('script')
     tag.async = true
+    tag.type = 'application/javascript'
     tag.src = _srcUrl || 'https://cdn.getpinwheel.com/pinwheel-v1.js'
     document.body.appendChild(tag)
 
