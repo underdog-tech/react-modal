@@ -34,6 +34,7 @@ const addScriptTag = (loadCb: Function, url?: string) => {
   document.body.appendChild(tag)
 
   tag.addEventListener('load', () => loadCb())
+  return tag
 }
 
 const PinwheelModal = ({
@@ -46,6 +47,7 @@ const PinwheelModal = ({
 }) => {
   const [loaded, setLoaded] = React.useState(false)
   const [showing, setShowing] = React.useState(false)
+  const [tag, setTag] = React.useState<HTMLScriptElement>()
 
   React.useEffect(() => {
     addScriptTag(() => setLoaded(true), _srcUrl)
@@ -59,8 +61,11 @@ const PinwheelModal = ({
     const els = document.querySelectorAll('.pinwheel-portal')
     els.forEach((e) => e.parentNode?.removeChild(e))
 
-    addScriptTag(() => setLoaded(true), _srcUrl)
-  }, [_srcUrl, setLoaded])
+    if (tag && tag.parentNode) tag.parentNode.removeChild(tag)
+
+    const newTag = addScriptTag(() => setLoaded(true), _srcUrl)
+    setTag(newTag)
+  }, [_srcUrl, setLoaded, tag])
 
   React.useEffect(() => {
     if (!loaded) return
