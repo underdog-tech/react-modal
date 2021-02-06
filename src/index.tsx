@@ -27,11 +27,11 @@ type EventPayload =
   | { selectedEmployerId: string; selectedEmployerName: string }
   | { selectedPlatformId: string; selectedPlatformName: string }
   | { value: number; unit: '%' | '$' }
-  | { error?: Error }
   | LinkResult
   | { accountId: string }
   | Error
   | {}
+  | undefined
 
 interface PinwheelOpenOptions {
   linkToken: string
