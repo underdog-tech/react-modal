@@ -63,14 +63,7 @@ const addScriptTag = (loadCb: Function, url?: string) => {
   return tag
 }
 
-const PinwheelModal = ({
-  open,
-  _srcUrl,
-  ...props
-}: PinwheelOpenOptions & {
-  open?: boolean
-  _srcUrl?: string
-}) => {
+const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
   const [loaded, setLoaded] = React.useState(false)
   const [showing, setShowing] = React.useState(false)
   const [tag, setTag] = React.useState<HTMLScriptElement>()
