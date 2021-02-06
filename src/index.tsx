@@ -1,19 +1,45 @@
 import * as React from 'react'
 
+export type LinkResult = {
+  accountId: string
+  job: string
+  userSelectedParameters: {
+    amount?: { value: number; unit: '%' | '$' }
+  }
+}
+
+export type ErrorType =
+  | 'clientError'
+  | 'systemError'
+  | 'userActionRequired'
+  | 'platformError'
+  | 'invalidAccountsConfiguration'
+  | 'invalidUserInput'
+  | 'invalidLinkToken'
+
+export type Error = {
+  type: ErrorType
+  code: string
+  message: string
+}
+
+type EventPayload =
+  | { selectedEmployerId: string; selectedEmployerName: string }
+  | { selectedPlatformId: string; selectedPlatformName: string }
+  | { value: number; unit: '%' | '$' }
+  | { error?: Error }
+  | LinkResult
+  | { accountId: string }
+  | Error
+  | {}
+
 interface PinwheelOpenOptions {
   linkToken: string
-  onSuccess?: (result: { tokenId: string }) => void
-  onExit?: (
-    error: { errorCode: string; errorMsg: string },
-    result: { tokenId: string }
-  ) => void
-  onEvent?: (
-    eventName: string,
-    params: {
-      modalSessionId?: string
-      [key: string]: any
-    }
-  ) => void
+  onLogin?: (result: { accountId: string }) => void
+  onSuccess?: (result: LinkResult) => void
+  onError?: (error: Error) => void
+  onExit?: (error?: Error) => void
+  onEvent?: (eventName: string, payload: EventPayload) => void
 }
 
 declare let Pinwheel: {
