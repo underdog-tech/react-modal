@@ -1,19 +1,45 @@
 import * as React from 'react'
 
+export type LinkResult = {
+  accountId: string
+  job: string
+  userSelectedParameters: {
+    amount?: { value: number; unit: '%' | '$' }
+  }
+}
+
+export type ErrorType =
+  | 'clientError'
+  | 'systemError'
+  | 'userActionRequired'
+  | 'platformError'
+  | 'invalidAccountsConfiguration'
+  | 'invalidUserInput'
+  | 'invalidLinkToken'
+
+export type Error = {
+  type: ErrorType
+  code: string
+  message: string
+}
+
+type EventPayload =
+  | { selectedEmployerId: string; selectedEmployerName: string }
+  | { selectedPlatformId: string; selectedPlatformName: string }
+  | { value: number; unit: '%' | '$' }
+  | LinkResult
+  | { accountId: string }
+  | Error
+  | {}
+  | undefined
+
 interface PinwheelOpenOptions {
   linkToken: string
-  onSuccess?: (result: { tokenId: string }) => void
-  onExit?: (
-    error: { errorCode: string; errorMsg: string },
-    result: { tokenId: string }
-  ) => void
-  onEvent?: (
-    eventName: string,
-    params: {
-      modalSessionId?: string
-      [key: string]: any
-    }
-  ) => void
+  onLogin?: (result: { accountId: string }) => void
+  onSuccess?: (result: LinkResult) => void
+  onError?: (error: Error) => void
+  onExit?: (error?: Error) => void
+  onEvent?: (eventName: string, payload: EventPayload) => void
 }
 
 declare let Pinwheel: {
@@ -30,21 +56,14 @@ const addScriptTag = (loadCb: Function, url?: string) => {
   const tag = document.createElement('script')
   tag.async = true
   tag.type = 'application/javascript'
-  tag.src = url || 'https://cdn.getpinwheel.com/pinwheel-v1.js'
+  tag.src = url || 'https://cdn.getpinwheel.com/pinwheel-v2.js'
   document.body.appendChild(tag)
 
   tag.addEventListener('load', () => loadCb())
   return tag
 }
 
-const PinwheelModal = ({
-  open,
-  _srcUrl,
-  ...props
-}: PinwheelOpenOptions & {
-  open?: boolean
-  _srcUrl?: string
-}) => {
+const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
   const [loaded, setLoaded] = React.useState(false)
   const [showing, setShowing] = React.useState(false)
   const [tag, setTag] = React.useState<HTMLScriptElement>()
