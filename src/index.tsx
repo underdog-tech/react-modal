@@ -11,6 +11,7 @@ export type LinkResult = {
 export type ErrorType =
   | 'clientError'
   | 'systemError'
+  | 'networkError'
   | 'userActionRequired'
   | 'platformError'
   | 'invalidAccountsConfiguration'
