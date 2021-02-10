@@ -70,10 +70,6 @@ const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
   const [tag, setTag] = React.useState<HTMLScriptElement>()
 
   React.useEffect(() => {
-    addScriptTag(() => setLoaded(true), _srcUrl)
-  }, [setLoaded])
-
-  React.useEffect(() => {
     // eslint-disable-next-line dot-notation
     delete window['Pinwheel']
     setLoaded(false)
