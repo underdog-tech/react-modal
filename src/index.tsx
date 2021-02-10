@@ -65,14 +65,9 @@ const addScriptTag = (loadCb: Function, url?: string) => {
 }
 
 const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
-  console.log('in')
   const [loaded, setLoaded] = React.useState(false)
   const [showing, setShowing] = React.useState(false)
   const [tag, setTag] = React.useState<HTMLScriptElement>()
-
-  // React.useEffect(() => {
-  //   addScriptTag(() => setLoaded(true), _srcUrl)
-  // }, [setLoaded])
 
   React.useEffect(() => {
     // eslint-disable-next-line dot-notation
@@ -81,9 +76,6 @@ const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
 
     const els = document.querySelectorAll('.pinwheel-portal')
     els.forEach((e) => e.parentNode?.removeChild(e))
-
-    console.log(`--------- els`, els); // eslint-disable-line
-    console.log(`adding script tag ${_srcUrl}`); // eslint-disable-line
 
     const newTag = addScriptTag(() => setLoaded(true), _srcUrl)
     setTag(newTag)
