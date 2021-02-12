@@ -4,7 +4,7 @@ export type LinkResult = {
   accountId: string
   job: string
   params: {
-    deposit?: { amount: number; type: 'fixed' | 'percentage' }
+    amount?: { value: number; unit: '%' | '$' }
   }
 }
 
