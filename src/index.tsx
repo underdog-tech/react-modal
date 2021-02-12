@@ -3,7 +3,7 @@ import * as React from 'react'
 export type LinkResult = {
   accountId: string
   job: string
-  userSelectedParameters: {
+  params: {
     amount?: { value: number; unit: '%' | '$' }
   }
 }
