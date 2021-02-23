@@ -29,14 +29,14 @@ type EventPayload =
   | { selectedPlatformId: string; selectedPlatformName: string }
   | { value: number; unit: '%' | '$' }
   | LinkResult
-  | { accountId: string }
+  | { accountId: string; platformId: string }
   | Error
   | {}
   | undefined
 
 interface PinwheelOpenOptions {
   linkToken: string
-  onLogin?: (result: { accountId: string }) => void
+  onLogin?: (result: { accountId: string; platformId: string }) => void
   onSuccess?: (result: LinkResult) => void
   onError?: (error: Error) => void
   onExit?: (error?: Error) => void
