@@ -22,7 +22,6 @@ export type Error = {
   type: ErrorType
   code: string
   message: string
-  pendingRetry: boolean
 }
 
 type EventPayload =
