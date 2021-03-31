@@ -1,11 +1,5 @@
 import * as React from 'react'
 
-const version: SemverObject = {
-  major: 2,
-  minor: 2,
-  patch: 1
-}
-
 export type LinkResult = {
   accountId: string
   job: string
@@ -40,13 +34,7 @@ type EventPayload =
   | {}
   | undefined
 
-export type SemverObject = {
-  major: number
-  minor: number
-  patch: number
-}
-
-interface PinwheelPublicOpenOptions {
+interface PinwheelOpenOptions {
   linkToken: string
   onLogin?: (result: { accountId: string; platformId: string }) => void
   onSuccess?: (result: LinkResult) => void
@@ -55,19 +43,12 @@ interface PinwheelPublicOpenOptions {
   onEvent?: (eventName: string, payload: EventPayload) => void
 }
 
-interface PinwheelPrivateOpenOptions {
-  _versionOverride?: SemverObject
-  _sdkOverride?: string
-}
-
 declare let Pinwheel: {
-  open: (
-    options: PinwheelPublicOpenOptions & PinwheelPrivateOpenOptions
-  ) => Promise<void>
+  open: (options: PinwheelOpenOptions) => Promise<void>
   close: () => Promise<void>
 }
 
-export type PinwheelModalProps = PinwheelPublicOpenOptions & {
+export type PinwheelModalProps = PinwheelOpenOptions & {
   open?: boolean
   _srcUrl?: string
 }
@@ -108,11 +89,7 @@ const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
     if (!loaded) return
 
     if (open && !showing) {
-      Pinwheel.open({
-        ...props,
-        _versionOverride: version,
-        _sdkOverride: 'react'
-      })
+      Pinwheel.open(props)
       setShowing(true)
     } else if (!open && showing) {
       Pinwheel.close()
