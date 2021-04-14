@@ -76,7 +76,7 @@ const addScriptTag = (loadCb: Function, url?: string) => {
   const tag = document.createElement('script')
   tag.async = true
   tag.type = 'application/javascript'
-  tag.src = url || 'https://cdn.getpinwheel.com/pinwheel-v2.js'
+  tag.src = url || `https://cdn.getpinwheel.com/pinwheel-v${major}.${minor}.js`
   document.body.appendChild(tag)
 
   tag.addEventListener('load', () => loadCb())
