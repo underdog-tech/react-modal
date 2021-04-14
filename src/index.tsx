@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-const version: SemverObject = {
-  major: 2,
-  minor: 2,
-  patch: 2
-}
+const [major, minor, patch] = (require('../package.json').version as string)
+  .split('.')
+  .map(Number)
+
+export const SDK_VERSION: SemverObject = { major, minor, patch }
 
 export type LinkResult = {
   accountId: string
@@ -110,7 +110,7 @@ const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
     if (open && !showing) {
       Pinwheel.open({
         ...props,
-        _versionOverride: version,
+        _versionOverride: SDK_VERSION,
         _sdkOverride: 'react'
       })
       setShowing(true)
