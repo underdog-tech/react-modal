@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "cd .. && npm i && npm build && cd - && npm i && npm start",
+    "prestart": "cd .. && npm i && npm build && cd - && npm i",
     "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
     "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
     "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
