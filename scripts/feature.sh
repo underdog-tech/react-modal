@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ set -e
  printf "\nChecking out master branch...\n"
  git checkout master || exit "$?"
 
