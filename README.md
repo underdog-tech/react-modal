@@ -24,7 +24,7 @@ const App = () => {
 }
 ```
 
-Please consult [our docs](https://docs.getpinwheel.com/link/index.html#usage) for more information.
+Please consult [our docs](https://docs.pinwheelapi.com/docs/api/docs/introduction/Link.md) for more information.
 
 ## Quick Start
 
@@ -41,4 +41,5 @@ npm start
 
 ## License
 
-MIT © [roscioli](https://github.com/roscioli)
+MIT ©
+Pinwheel React Modal is available under the MIT license. See the LICENSE file for more info.
