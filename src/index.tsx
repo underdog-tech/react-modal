@@ -28,9 +28,10 @@ export type Error = {
   type: ErrorType
   code: string
   message: string
+  pendingRetry: boolean
 }
 
-type EventPayload =
+export type EventPayload =
   | { selectedEmployerId: string; selectedEmployerName: string }
   | { selectedPlatformId: string; selectedPlatformName: string }
   | { value: number; unit: '%' | '$' }
