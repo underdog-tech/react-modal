@@ -37,6 +37,7 @@ export type EventPayload =
   | { value: number; unit: '%' | '$' }
   | LinkResult
   | { accountId: string; platformId: string }
+  | { platformId: string }
   | Error
   | {}
   | undefined
@@ -47,13 +48,28 @@ export type SemverObject = {
   patch: number
 }
 
+const EVENT_NAMES = [
+  'open',
+  'select_employer',
+  'select_platform',
+  'incorrect_platform_given',
+  'login_attempt',
+  'login',
+  'input_amount',
+  'exit',
+  'success',
+  'error'
+] as const
+
+export type EventName = typeof EVENT_NAMES[number]
+
 interface PinwheelPublicOpenOptions {
   linkToken: string
   onLogin?: (result: { accountId: string; platformId: string }) => void
   onSuccess?: (result: LinkResult) => void
   onError?: (error: Error) => void
   onExit?: (error?: Error) => void
-  onEvent?: (eventName: string, payload: EventPayload) => void
+  onEvent?: (eventName: EventName, payload: EventPayload) => void
 }
 
 interface PinwheelPrivateOpenOptions {
