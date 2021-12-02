@@ -81,7 +81,7 @@ interface PinwheelPublicOpenOptions {
   onLogin?: (result: { accountId: string; platformId: string }) => void
   onSuccess?: (result: LinkResult) => void
   onError?: (error: PinwheelError) => void
-  onExit?: (error?: PinwheelError | EmptyPayloadObject) => void
+  onExit?: (error: PinwheelError | EmptyPayloadObject) => void
   onEvent?: (eventName: EventName, payload: EventPayload) => void
 }
 
