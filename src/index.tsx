@@ -24,12 +24,20 @@ export type ErrorType =
   | 'invalidUserInput'
   | 'invalidLinkToken'
 
+/**
+ * @deprecated The type should not be used as it clashes with the native JS `Error` object.
+ * You should use `PinwheelError` instead. `Error` will be removed in version 2.4
+ */
 export type Error = {
   type: ErrorType
   code: string
   message: string
   pendingRetry: boolean
 }
+
+export type PinwheelError = Error
+
+export type EmptyPayloadObject = {}
 
 export type EventPayload =
   | { selectedEmployerId: string; selectedEmployerName: string }
@@ -38,8 +46,8 @@ export type EventPayload =
   | LinkResult
   | { accountId: string; platformId: string }
   | { platformId: string }
-  | Error
-  | {}
+  | PinwheelError
+  | EmptyPayloadObject
   | undefined
 
 export type SemverObject = {
@@ -67,8 +75,8 @@ interface PinwheelPublicOpenOptions {
   linkToken: string
   onLogin?: (result: { accountId: string; platformId: string }) => void
   onSuccess?: (result: LinkResult) => void
-  onError?: (error: Error) => void
-  onExit?: (error?: Error) => void
+  onError?: (error: PinwheelError) => void
+  onExit?: (error?: PinwheelError | EmptyPayloadObject) => void
   onEvent?: (eventName: EventName, payload: EventPayload) => void
 }
 
