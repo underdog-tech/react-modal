@@ -14,6 +14,9 @@ export type LinkResult = {
   }
 }
 
+/**
+ * @deprecated You should use `PinwheelErrorType` instead. `ErrorType` will be removed in version 2.4
+ */
 export type ErrorType =
   | 'clientError'
   | 'systemError'
@@ -29,11 +32,13 @@ export type ErrorType =
  * You should use `PinwheelError` instead. `Error` will be removed in version 2.4
  */
 export type Error = {
-  type: ErrorType
+  type: PinwheelErrorType
   code: string
   message: string
   pendingRetry: boolean
 }
+
+export type PinwheelErrorType = ErrorType
 
 export type PinwheelError = Error
 
