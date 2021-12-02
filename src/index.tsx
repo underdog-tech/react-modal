@@ -42,7 +42,7 @@ export type PinwheelErrorType = ErrorType
 
 export type PinwheelError = Error
 
-export type EmptyPayloadObject = {}
+export type EmptyPayloadObject = Record<string, never>
 
 export type EventPayload =
   | { selectedEmployerId: string; selectedEmployerName: string }
