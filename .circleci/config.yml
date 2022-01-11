@@ -14,6 +14,9 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/react-modal/.npmrc
       - run:
+          name: Confirm node version npm install
+          command: cat package-lock.json | grep lockfileVersion | grep 1 || exit 1
+      - run:
           name: NPM Install
           command: npm install
       - run: |
