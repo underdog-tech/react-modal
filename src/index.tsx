@@ -139,9 +139,9 @@ const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
 
     if (open && !showing) {
       Pinwheel.open({
-        ...props,
         _versionOverride: SDK_VERSION,
-        _sdkOverride: 'react'
+        _sdkOverride: 'react',
+        ...props,
       })
       setShowing(true)
     } else if (!open && showing) {
