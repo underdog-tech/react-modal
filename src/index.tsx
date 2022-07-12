@@ -88,6 +88,7 @@ interface PinwheelPublicOpenOptions {
 interface PinwheelPrivateOpenOptions {
   _versionOverride?: SemverObject
   _sdkOverride?: string
+  _modalSessionIdOverride?: string
 }
 
 declare let Pinwheel: {
@@ -113,7 +114,13 @@ const addScriptTag = (loadCb: Function, url?: string) => {
   return tag
 }
 
-const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
+const PinwheelModal = ({
+  open,
+  _srcUrl,
+  // @ts-ignore
+  _modalSessionIdOverride,
+  ...props
+}: PinwheelModalProps) => {
   const [loaded, setLoaded] = React.useState(false)
   const [showing, setShowing] = React.useState(false)
   const [tag, setTag] = React.useState<HTMLScriptElement>()
@@ -141,7 +148,8 @@ const PinwheelModal = ({ open, _srcUrl, ...props }: PinwheelModalProps) => {
       Pinwheel.open({
         ...props,
         _versionOverride: SDK_VERSION,
-        _sdkOverride: 'react'
+        _sdkOverride: 'react',
+        _modalSessionIdOverride
       })
       setShowing(true)
     } else if (!open && showing) {
