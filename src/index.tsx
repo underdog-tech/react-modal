@@ -146,9 +146,9 @@ const PinwheelModal = ({
 
     if (open && !showing) {
       Pinwheel.open({
-        ...props,
         _versionOverride: SDK_VERSION,
         _sdkOverride: 'react',
+        ...props,
         _modalSessionIdOverride
       })
       setShowing(true)
