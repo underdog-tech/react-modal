@@ -36,7 +36,7 @@ jobs:
     executor: node-executor
     steps:
       - attach_workspace:
-        at: ~/react-modal
+          at: ~/react-modal
       - run:
           name: NPM Publish
           command: npm publish
