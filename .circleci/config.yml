@@ -3,46 +3,48 @@ version: 2.1
 orbs:
   slack: circleci/slack@3.4.2
 
-jobs:
-  publish:
+executors:
+  node-executor:
     docker:
-      - image: circleci/node:12.16.1
+      - image: cimg/node:18.12.1
     working_directory: ~/react-modal
+
+jobs:
+  build-and-test:
+    executor: node-executor
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/react-modal/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run:
           name: Confirm node version npm install
-          command: cat package-lock.json | grep lockfileVersion | grep 1 || exit 1
+          command: cat package-lock.json | grep lockfileVersion | grep 3 || exit 1
       - run:
-          name: NPM Install
+          name: Install
           command: npm install
       - run:
-          name: Linting
+          name: Lint
           command: npm run lint
       - run:
-          name: Unit tests
-          command: npm run test
-      - run: |
-          _NPM_PACKAGE_NAME=$(npm list | head -n 1 | cut -d ' ' -f1)
-          if [[ -z "$(npm info ${_NPM_PACKAGE_NAME} 2> ./test)"  ]]; then
-              echo "version doesnt exist, continuing"
-          else
-              echo "version already exists"
-              circleci-agent step halt
-          fi
-      - run:
-          name: NPM Build
-          command: npm run build
+          name: Test
+          command: nmp run test
+  publish:
+    executor: node-executor
+    steps:
+      - attach_workspace:
+        at: ~/react-modal
       - run:
           name: NPM Publish
           command: npm publish
 
 workflows:
-  publish:
+  build_and_deploy:
     jobs:
+      - build-and-test
       - publish:
           filters:
             branches:
