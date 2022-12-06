@@ -19,6 +19,9 @@ jobs:
       - run:
           name: NPM Install
           command: npm install
+      - run:
+          name: Test modal
+          command: npm run test
       - run: |
           _NPM_PACKAGE_NAME=$(npm list | head -n 1 | cut -d ' ' -f1)
           if [[ -z "$(npm info ${_NPM_PACKAGE_NAME} 2> ./test)"  ]]; then
