@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "echo 'start'",
-    "test": "echo 'test'"
+    "start": "./node_modules/.bin/webpack-cli serve",
+    "test": "../node_modules/.bin/jest"
   },
   "dependencies": {
     "@testing-library/jest-dom": "file:../node_modules/@testing-library/jest-dom",
@@ -19,11 +19,11 @@
     "react-dom": "file:../node_modules/react-dom",
     "typescript": "file:../node_modules/typescript",
     "webpack-dev-server": "file:../node_modules/webpack-dev-server",
+    "webpack-cli": "file:../node_modules/webpack-cli",
     "webpack": "file:../node_modules/webpack",
     "css-loader": "file:../node_modules/css-loader",
     "style-loader": "file:../node_modules/style-loader",
     "ts-loader": "file:../node_modules/ts-loader",
-    "jest": "file:../node_modules/jest",
     "@pinwheel/react-modal": "file:.."
   },
   "devDependencies": {
