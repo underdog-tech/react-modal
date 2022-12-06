@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "lint": "eslint src --ext .ts,.tsx",
     "start": "cd example && npm install && npm run start",
     "test": "cd example && npm install && npm run test",
     "predeploy": "cd example && npm install && npm run build",
