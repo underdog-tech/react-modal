@@ -28,7 +28,7 @@ jobs:
           command: npm run lint
       - run:
           name: Test
-          command: nmp run test
+          command: npm run test
   publish:
     executor: node-executor
     steps:
