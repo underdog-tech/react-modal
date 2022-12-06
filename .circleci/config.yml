@@ -21,9 +21,6 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run:
-          name: Confirm node version npm install
-          command: cat package-lock.json | grep lockfileVersion | grep 3 || exit 1
-      - run:
           name: Install
           command: npm install
       - run:
