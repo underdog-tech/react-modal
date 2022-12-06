@@ -20,7 +20,10 @@ jobs:
           name: NPM Install
           command: npm install
       - run:
-          name: Test modal
+          name: Linting
+          command: npm run lint
+      - run:
+          name: Unit tests
           command: npm run test
       - run: |
           _NPM_PACKAGE_NAME=$(npm list | head -n 1 | cut -d ' ' -f1)
