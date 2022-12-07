@@ -42,7 +42,3 @@ workflows:
   build_and_deploy:
     jobs:
       - build-and-test
-      - publish:
-          filters:
-            branches:
-              only: master
