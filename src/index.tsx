@@ -1,8 +1,7 @@
 import * as React from 'react'
+// import pck from '../package.json'
 
-const [major, minor, patch] = (require('../package.json').version as string)
-  .split('.')
-  .map(Number)
+const [major, minor, patch] = [2, 3, 6] // (pck.version as string).split('.').map(Number)
 
 export const SDK_VERSION: SemverObject = { major, minor, patch }
 
@@ -103,6 +102,7 @@ export type PinwheelModalProps = PinwheelPublicOpenOptions & {
   _srcUrl?: string
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 const addScriptTag = (loadCb: Function, url?: string) => {
   const tag = document.createElement('script')
   tag.async = true
@@ -139,6 +139,7 @@ const PinwheelModal = ({
 
   React.useEffect(() => {
     if (tag && tag.parentNode) tag.parentNode.removeChild(tag)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_srcUrl])
 
   React.useEffect(() => {
@@ -156,6 +157,7 @@ const PinwheelModal = ({
       Pinwheel.close()
       setShowing(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, showing, setShowing, loaded])
 
   return <div />

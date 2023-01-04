@@ -4,11 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "cd .. && npm i && npm build && cd - && npm i",
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
-    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
-    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+    "start": "./node_modules/.bin/webpack-cli serve",
+    "test": "../node_modules/.bin/jest"
   },
   "dependencies": {
     "@testing-library/jest-dom": "file:../node_modules/@testing-library/jest-dom",
@@ -20,8 +17,13 @@
     "@types/react-dom": "file:../node_modules/@types/react-dom",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
-    "react-scripts": "file:../node_modules/react-scripts",
     "typescript": "file:../node_modules/typescript",
+    "webpack-dev-server": "file:../node_modules/webpack-dev-server",
+    "webpack-cli": "file:../node_modules/webpack-cli",
+    "webpack": "file:../node_modules/webpack",
+    "css-loader": "file:../node_modules/css-loader",
+    "style-loader": "file:../node_modules/style-loader",
+    "ts-loader": "file:../node_modules/ts-loader",
     "@pinwheel/react-modal": "file:.."
   },
   "devDependencies": {
