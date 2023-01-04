@@ -44,23 +44,23 @@ export type PinwheelError = Error
 export type EmptyPayloadObject = Record<string, never>
 
 // BEGIN: AMOUNT SELECTION TYPES
-type _PartialSwitch<T> = { action: 'partial_switch'; allocation: T };
+type _PartialSwitch<T> = { action: 'partial_switch'; allocation: T }
 type AmountSelectionPercentage = _PartialSwitch<{
-  type: 'percentage';
-  value: number;
-}>;
+  type: 'percentage'
+  value: number
+}>
 type AmountSelectionAmount = _PartialSwitch<{
-  type: 'amount';
-  value: number;
-}>;
+  type: 'amount'
+  value: number
+}>
 type AmountSelectionRemainder = _PartialSwitch<{
-  type: 'remainder';
-}>;
+  type: 'remainder'
+}>
 type AmountSelection =
   | { action: 'full_switch' }
   | AmountSelectionRemainder
   | AmountSelectionAmount
-  | AmountSelectionPercentage;
+  | AmountSelectionPercentage
 // END: AMOUNT SELECTION TYPES
 
 export type EventPayload =
