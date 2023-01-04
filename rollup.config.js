@@ -3,7 +3,6 @@
 const css = require('rollup-plugin-import-css')
 const typescript = require('@rollup/plugin-typescript')
 const pkg = require('./package.json')
-const json = require('@rollup/plugin-json')
 
 module.exports = {
   input: 'src/index.tsx',
