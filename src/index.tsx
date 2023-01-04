@@ -1,7 +1,7 @@
 import * as React from 'react'
-// import pck from '../package.json'
 
-const [major, minor, patch] = [2, 3, 6] // (pck.version as string).split('.').map(Number)
+// TODO: Import package json version after rollup tweaks
+const [major, minor, patch] = [2, 3, 8]
 
 export const SDK_VERSION: SemverObject = { major, minor, patch }
 
@@ -43,7 +43,28 @@ export type PinwheelError = Error
 
 export type EmptyPayloadObject = Record<string, never>
 
+// BEGIN: AMOUNT SELECTION TYPES
+type _PartialSwitch<T> = { action: 'partial_switch'; allocation: T }
+type InputAllocationPercentage = _PartialSwitch<{
+  type: 'percentage'
+  value: number
+}>
+type InputAllocationAmount = _PartialSwitch<{
+  type: 'amount'
+  value: number
+}>
+type InputAllocationRemainder = _PartialSwitch<{
+  type: 'remainder'
+}>
+export type InputAllocation =
+  | { action: 'full_switch' }
+  | InputAllocationRemainder
+  | InputAllocationAmount
+  | InputAllocationPercentage
+// END: AMOUNT SELECTION TYPES
+
 export type EventPayload =
+  | InputAllocation
   | { selectedEmployerId: string; selectedEmployerName: string }
   | { selectedPlatformId: string; selectedPlatformName: string }
   | { value: number; unit: '%' | '$' }
@@ -70,7 +91,8 @@ const EVENT_NAMES = [
   'input_amount',
   'exit',
   'success',
-  'error'
+  'error',
+  'input_allocation'
 ] as const
 
 export type EventName = typeof EVENT_NAMES[number]
