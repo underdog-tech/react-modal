@@ -32,8 +32,30 @@ jobs:
   publish:
     executor: node-executor
     steps:
-      - attach_workspace:
-          at: ~/react-modal
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/react-modal/.npmrc
+      - run:
+          name: Confirm node version npm install
+          command: cat package-lock.json | grep lockfileVersion | grep 2 || exit 1
+      - run:
+          name: NPM Install
+          command: npm install
+      - run: |
+          _NPM_PACKAGE_NAME=$(npm list | head -n 1 | cut -d ' ' -f1)
+          if [[ -z "$(npm info ${_NPM_PACKAGE_NAME} 2> ./test)"  ]]; then
+              echo "version doesnt exist, continuing"
+          else
+              echo "version already exists"
+              circleci-agent step halt
+          fi
+      - run:
+          name: NPM Build
+          command: npm run build
       - run:
           name: NPM Publish
           command: npm publish
@@ -42,3 +64,9 @@ workflows:
   build_and_deploy:
     jobs:
       - build-and-test
+  publish:
+    jobs:
+      - publish:
+          filters:
+            branches:
+              only: master
