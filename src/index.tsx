@@ -1,7 +1,7 @@
 import * as React from 'react'
 // import pck from '../package.json'
 
-const [major, minor, patch] = [2,3,6] // (pck.version as string).split('.').map(Number)
+const [major, minor, patch] = [2, 3, 6] // (pck.version as string).split('.').map(Number)
 
 export const SDK_VERSION: SemverObject = { major, minor, patch }
 
