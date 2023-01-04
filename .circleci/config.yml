@@ -27,6 +27,9 @@ jobs:
           name: Lint
           command: npm run lint
       - run:
+          name: NPM Build
+          command: npm run build
+      - run:
           name: Test
           command: npm run test
   publish:
