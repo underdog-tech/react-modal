@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 // TODO: Import package json version after rollup tweaks
-const [major, minor, patch] = [2, 3, 7]
+const [major, minor, patch] = [2, 3, 8]
 
 export const SDK_VERSION: SemverObject = { major, minor, patch }
 
