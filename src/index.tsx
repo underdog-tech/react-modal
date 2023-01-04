@@ -45,26 +45,26 @@ export type EmptyPayloadObject = Record<string, never>
 
 // BEGIN: AMOUNT SELECTION TYPES
 type _PartialSwitch<T> = { action: 'partial_switch'; allocation: T }
-type AmountSelectionPercentage = _PartialSwitch<{
+type InputAllocationPercentage = _PartialSwitch<{
   type: 'percentage'
   value: number
 }>
-type AmountSelectionAmount = _PartialSwitch<{
+type InputAllocationAmount = _PartialSwitch<{
   type: 'amount'
   value: number
 }>
-type AmountSelectionRemainder = _PartialSwitch<{
+type InputAllocationRemainder = _PartialSwitch<{
   type: 'remainder'
 }>
-type AmountSelection =
+export type InputAllocation =
   | { action: 'full_switch' }
-  | AmountSelectionRemainder
-  | AmountSelectionAmount
-  | AmountSelectionPercentage
+  | InputAllocationRemainder
+  | InputAllocationAmount
+  | InputAllocationPercentage
 // END: AMOUNT SELECTION TYPES
 
 export type EventPayload =
-  | AmountSelection
+  | InputAllocation
   | { selectedEmployerId: string; selectedEmployerName: string }
   | { selectedPlatformId: string; selectedPlatformName: string }
   | { value: number; unit: '%' | '$' }
