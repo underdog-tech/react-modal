@@ -1,7 +1,7 @@
 import * as React from 'react'
-// import pck from '../package.json'
 
-const [major, minor, patch] = [2, 3, 6] // (pck.version as string).split('.').map(Number)
+// TODO: Import package json version after rollup tweaks
+const [major, minor, patch] = [2, 3, 7]
 
 export const SDK_VERSION: SemverObject = { major, minor, patch }
 
@@ -70,7 +70,8 @@ const EVENT_NAMES = [
   'input_amount',
   'exit',
   'success',
-  'error'
+  'error',
+  'input_allocation'
 ] as const
 
 export type EventName = typeof EVENT_NAMES[number]
