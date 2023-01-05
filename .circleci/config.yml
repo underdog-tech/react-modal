@@ -70,6 +70,7 @@ workflows:
   publish:
     jobs:
       - publish:
+          context: 'frontend-production'
           filters:
             branches:
               only: master
