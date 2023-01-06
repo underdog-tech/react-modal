@@ -66,10 +66,12 @@ jobs:
 workflows:
   build_and_deploy:
     jobs:
-      - build-and-test
+      - build-and-test:
+          context: 'frontend-production'
   publish:
     jobs:
       - publish:
+          context: 'frontend-production'
           filters:
             branches:
               only: master
