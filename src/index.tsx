@@ -136,13 +136,15 @@ const addScriptTag = (loadCb: Function, url?: string) => {
   return tag
 }
 
-const PinwheelModal = ({
-  open,
-  _srcUrl,
-  // @ts-ignore
-  _modalSessionIdOverride,
-  ...props
-}: PinwheelModalProps) => {
+const PinwheelModal = (allProps: PinwheelModalProps) => {
+  const { open, _srcUrl, ...props } = allProps
+
+  // Need to get _modalSessionIdOverride like this or else client using this module
+  // with strict typescript typing will not be able to compile this without an error.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const modalSessionIdOverride = (allProps as unknown as any)
+    ._modalSessionIdOverride
+
   const [loaded, setLoaded] = React.useState(false)
   const [showing, setShowing] = React.useState(false)
   const [tag, setTag] = React.useState<HTMLScriptElement>()
@@ -172,7 +174,7 @@ const PinwheelModal = ({
         _versionOverride: SDK_VERSION,
         _sdkOverride: 'react',
         ...props,
-        _modalSessionIdOverride
+        _modalSessionIdOverride: modalSessionIdOverride
       })
       setShowing(true)
     } else if (!open && showing) {
