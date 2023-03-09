@@ -141,9 +141,10 @@ const PinwheelModal = (allProps: PinwheelModalProps) => {
 
   // Need to get _modalSessionIdOverride like this or else client using this module
   // with strict typescript typing will not be able to compile this without an error.
+  // Error: "node_modules/@pinwheel/react-modal/dist/index.d.ts(85,48): error TS2339: Property '_modalSessionIdOverride' does not exist on type 'PinwheelModalProps'."
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const modalSessionIdOverride = (allProps as unknown as any)
-    ._modalSessionIdOverride
+  const propsAsAny = allProps as unknown as any
+  const { _modalSessionIdOverride } = propsAsAny
 
   const [loaded, setLoaded] = React.useState(false)
   const [showing, setShowing] = React.useState(false)
@@ -174,7 +175,7 @@ const PinwheelModal = (allProps: PinwheelModalProps) => {
         _versionOverride: SDK_VERSION,
         _sdkOverride: 'react',
         ...props,
-        _modalSessionIdOverride: modalSessionIdOverride
+        _modalSessionIdOverride
       })
       setShowing(true)
     } else if (!open && showing) {
