@@ -97,6 +97,14 @@ const EVENT_NAMES = [
 
 export type EventName = typeof EVENT_NAMES[number]
 
+type CssSize = `${string}${'px' | '%' | 'vw' | 'vh' | 'em'}`
+export type ModalStylingParams = {
+  deltaX?: CssSize
+  deltaY?: CssSize
+  width?: CssSize
+  height?: CssSize
+}
+
 interface PinwheelPublicOpenOptions {
   linkToken: string
   onLogin?: (result: { accountId: string; platformId: string }) => void
@@ -104,6 +112,10 @@ interface PinwheelPublicOpenOptions {
   onError?: (error: PinwheelError) => void
   onExit?: (error: PinwheelError | EmptyPayloadObject) => void
   onEvent?: (eventName: EventName, payload: EventPayload) => void
+  /**
+   * @experimental - Adjust modal height, width, and placement on screen
+   */
+  modalStyling?: ModalStylingParams
 }
 
 interface PinwheelPrivateOpenOptions {
