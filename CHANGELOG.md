@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## 2.3.x Releases
 
-- `2.3.x` Releases - [2.3.4](#234)
+- `2.3.x` Releases - [2.3.4](#234) | [2.3.11](#2311)
+
+---
+
+### 2.3.11
+
+#### Added
+
+- Allow passing in `modalStyling` prop as an experimental feature.
 
 ---
 
