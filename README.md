@@ -24,6 +24,8 @@ const App = () => {
 }
 ```
 
+All available React props are listed [here](https://docs.pinwheelapi.com/docs/link-1#initializationparams).
+
 Please consult [our docs](https://docs.pinwheelapi.com/docs/link-1) for more information.
 
 ## Quick Start
