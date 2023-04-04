@@ -24,7 +24,7 @@ const App = () => {
 }
 ```
 
-Please consult [our docs](https://docs.pinwheelapi.com/docs/api/docs/introduction/Link.md) for more information.
+Please consult [our docs](https://docs.pinwheelapi.com/docs/link-1) for more information.
 
 ## Quick Start
 
@@ -37,7 +37,7 @@ cd example
 npm i
 npm start
 # Go to localhost:3000?token=<PASTE YOUR GENERATED TOKEN HERE>
-`
+```
 
 ## License
 
