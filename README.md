@@ -24,7 +24,9 @@ const App = () => {
 }
 ```
 
-Please consult [our docs](https://docs.pinwheelapi.com/docs/api/docs/introduction/Link.md) for more information.
+All available React props are listed [here](https://docs.pinwheelapi.com/docs/link-1#initializationparams).
+
+Please consult [our docs](https://docs.pinwheelapi.com/docs/link-1) for more information.
 
 ## Quick Start
 
@@ -37,7 +39,7 @@ cd example
 npm i
 npm start
 # Go to localhost:3000?token=<PASTE YOUR GENERATED TOKEN HERE>
-`
+```
 
 ## License
 
