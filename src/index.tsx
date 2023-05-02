@@ -63,6 +63,14 @@ export type InputAllocation =
   | InputAllocationPercentage
 // END: AMOUNT SELECTION TYPES
 
+export type ScreenTransition = {
+  screenName: string
+  selectedEmployerId?: string
+  selectedEmployerName?: string
+  selectedPlatformId?: string
+  selectedPlatformName?: string
+}
+
 export type EventPayload =
   | InputAllocation
   | { selectedEmployerId: string; selectedEmployerName: string }
@@ -71,6 +79,7 @@ export type EventPayload =
   | LinkResult
   | { accountId: string; platformId: string }
   | { platformId: string }
+  | ScreenTransition
   | PinwheelError
   | EmptyPayloadObject
   | undefined
@@ -92,7 +101,8 @@ const EVENT_NAMES = [
   'exit',
   'success',
   'error',
-  'input_allocation'
+  'input_allocation',
+  'screen_transition'
 ] as const
 
 export type EventName = typeof EVENT_NAMES[number]
