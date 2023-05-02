@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 
 ## 2.3.x Releases
 
-- `2.3.x` Releases - [2.3.4](#234) | [2.3.11](#2311)
+- `2.3.x` Releases - [2.3.4](#234) | [2.3.11](#2311) [2.3.12](#2312)
+
+---
+
+### 2.3.12
+
+#### Added
+
+- Export `ScreenTransition` event payload type.
+
+##### Updated
+
+- Added `screen_transition` to `EventName` type.
+- Added `ScreenTransition` to `EventPayload` type.
 
 ---
 

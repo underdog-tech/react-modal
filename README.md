@@ -35,10 +35,14 @@ You may want to explore the usage of the modal locally.
 Start by going to the [developer dashboard](https://developer.getpinwheel.com/test-console) to create a token. Copy the token string. Then
 
 ```sh
+# Build the @pinwheel/react-modal package
+npm i
+npm run build
+# Run the example app
 cd example
 npm i
 npm start
-# Go to localhost:3000?token=<PASTE YOUR GENERATED TOKEN HERE>
+# Go to localhost:9000?token=<PASTE YOUR GENERATED TOKEN HERE>
 ```
 
 ## License
