@@ -9,22 +9,11 @@
   },
   "dependencies": {
     "@pinwheel/react-modal": "file:..",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "file:../node_modules/react",
+    "react-dom": "file:../node_modules/react-dom"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.5.1",
-    "@types/node": "^20.1.2",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
-    "css-loader": "^6.7.3",
-    "style-loader": "^3.3.2",
-    "ts-loader": "^9.4.2",
-    "typescript": "^5.0.4",
     "webpack": "^5.82.1",
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0"
