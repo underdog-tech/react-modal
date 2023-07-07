@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const css = require('rollup-plugin-import-css')
 const typescript = require('@rollup/plugin-typescript')
+const json = require('@rollup/plugin-json')
 const pkg = require('./package.json')
 
 module.exports = {
@@ -16,6 +17,6 @@ module.exports = {
       format: 'es'
     }
   ],
-  plugins: [css(), typescript()],
+  plugins: [css(), typescript(), json()],
   external: Object.keys(pkg.peerDependencies)
 }

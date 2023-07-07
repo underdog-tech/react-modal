@@ -1,9 +1,11 @@
 import * as React from 'react'
+import packageJson from '../package.json'
+import portalConfig from '../portal.config.json'
 
-// TODO: Import package json version after rollup tweaks
-const [major, minor, patch] = [2, 3, 9]
-
+const [major, minor, patch] = packageJson.version.split('.').map(Number)
 export const SDK_VERSION: SemverObject = { major, minor, patch }
+
+const { url: PORTAL_URL, integrity: PORTAL_INTEGRITY } = portalConfig
 
 export type LinkResult = {
   accountId: string
@@ -146,12 +148,17 @@ export type PinwheelModalProps = PinwheelPublicOpenOptions & {
   _srcUrl?: string
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-const addScriptTag = (loadCb: Function, url?: string) => {
+const addScriptTag = (loadCb: () => void, overrideUrl?: string) => {
   const tag = document.createElement('script')
   tag.async = true
   tag.type = 'application/javascript'
-  tag.src = url || `https://cdn.getpinwheel.com/pinwheel-v${major}.${minor}.js`
+  if (overrideUrl) {
+    tag.src = overrideUrl
+  } else {
+    tag.crossOrigin = 'anonymous'
+    tag.integrity = PORTAL_INTEGRITY
+    tag.src = PORTAL_URL
+  }
   document.body.appendChild(tag)
 
   tag.addEventListener('load', () => loadCb())
