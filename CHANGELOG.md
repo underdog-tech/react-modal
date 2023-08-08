@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+### 2.4.2
+
+#### Added
+
+- Allow passing in the `ariaHideDocumentContent` prop, which applies `aria-hidden` to background elements in the document while the Pinwheel modal is open.
+- Add `title` attribute to the Pinwheel iframe.
+
+---
+
 ### 2.4.0
 
 #### Security
