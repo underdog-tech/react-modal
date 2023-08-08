@@ -128,6 +128,7 @@ interface PinwheelPublicOpenOptions {
    * @experimental - Adjust modal height, width, and placement on screen
    */
   modalStyling?: ModalStylingParams
+  ariaHideDocumentContent?: boolean
 }
 
 interface PinwheelPrivateOpenOptions {
