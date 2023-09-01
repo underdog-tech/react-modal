@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+### 2.4.4
+
+#### Security
+
+- Pass parent window origin to the Link iframe, so that cross-origin messages are verified and always have a target origin set.
+
+---
+
 ### 2.4.3
 
 #### Added
