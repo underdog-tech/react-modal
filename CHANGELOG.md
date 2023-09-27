@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+### 2.4.5
+
+#### Added
+
+- Add the `clipboard-write` permission to the Pinwheel iframe.
+
+---
+
 ### 2.4.4
 
 #### Security
