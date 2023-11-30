@@ -7,85 +7,6 @@ export const SDK_VERSION: SemverObject = { major, minor, patch }
 
 const { url: PORTAL_URL, integrity: PORTAL_INTEGRITY } = portalConfig
 
-export type LinkResult = {
-  accountId: string
-  job: string
-  params: {
-    amount?: { value: number; unit: '%' | '$' }
-  }
-}
-
-/**
- * @deprecated You should use `PinwheelErrorType` instead. `ErrorType` will be removed in version 2.4
- */
-export type ErrorType =
-  | 'clientError'
-  | 'systemError'
-  | 'networkError'
-  | 'userActionRequired'
-  | 'platformError'
-  | 'invalidAccountsConfiguration'
-  | 'invalidUserInput'
-  | 'invalidLinkToken'
-
-/**
- * @deprecated The type should not be used as it clashes with the native JS `Error` object.
- * You should use `PinwheelError` instead. `Error` will be removed in version 2.4
- */
-export type Error = {
-  type: PinwheelErrorType
-  code: string
-  message: string
-  pendingRetry: boolean
-}
-
-export type PinwheelErrorType = ErrorType
-
-export type PinwheelError = Error
-
-export type EmptyPayloadObject = Record<string, never>
-
-// BEGIN: AMOUNT SELECTION TYPES
-type _PartialSwitch<T> = { action: 'partial_switch'; allocation: T }
-type InputAllocationPercentage = _PartialSwitch<{
-  type: 'percentage'
-  value: number
-}>
-type InputAllocationAmount = _PartialSwitch<{
-  type: 'amount'
-  value: number
-}>
-type InputAllocationRemainder = _PartialSwitch<{
-  type: 'remainder'
-}>
-export type InputAllocation =
-  | { action: 'full_switch' }
-  | InputAllocationRemainder
-  | InputAllocationAmount
-  | InputAllocationPercentage
-// END: AMOUNT SELECTION TYPES
-
-export type ScreenTransition = {
-  screenName: string
-  selectedEmployerId?: string
-  selectedEmployerName?: string
-  selectedPlatformId?: string
-  selectedPlatformName?: string
-}
-
-export type EventPayload =
-  | InputAllocation
-  | { selectedEmployerId: string; selectedEmployerName: string }
-  | { selectedPlatformId: string; selectedPlatformName: string }
-  | { value: number; unit: '%' | '$' }
-  | LinkResult
-  | { accountId: string; platformId: string }
-  | { platformId: string }
-  | ScreenTransition
-  | PinwheelError
-  | EmptyPayloadObject
-  | undefined
-
 export type SemverObject = {
   major: number
   minor: number
@@ -117,16 +38,7 @@ export type ModalStylingParams = {
   height?: CssSize
 }
 
-interface PinwheelPublicOpenOptions {
-  linkToken: string
-  onLogin?: (result: { accountId: string; platformId: string }) => void
-  onSuccess?: (result: LinkResult) => void
-  onError?: (error: PinwheelError) => void
-  onExit?: (error: PinwheelError | EmptyPayloadObject) => void
-  onEvent?: (eventName: EventName, payload: EventPayload) => void
-  /**
-   * @experimental - Adjust modal height, width, and placement on screen
-   */
+type PinwheelPublicOpenOptions = {
   modalStyling?: ModalStylingParams
   ariaHideDocumentContent?: boolean
 }
