@@ -96,7 +96,7 @@ export type ScreenTransitionEventPayload = {
  */
 export type ScreenTransition = ScreenTransitionEventPayload
 
-export type ExitEventPayload = {}
+export type ExitEventPayload = Record<string, never>
 
 export type SuccessEventPayload = {
   accountId: string
@@ -135,7 +135,7 @@ type EventPayloadAdditions = {
   dd_form_create: DdFormCreateEventPayload
   dd_form_download: DdFormDownloadEventPayload
   screen_transition: ScreenTransitionEventPayload
-  exit: ExitEventPayload
+  exit: ErrorEventPayload | ExitEventPayload
   success: SuccessEventPayload
   error: ErrorEventPayload
 }
