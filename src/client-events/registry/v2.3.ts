@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import type { AdditionsType, ModificationsType, RemovalsType } from '../utils'
 
-export type ErrorType =
+export type PinwheelErrorType =
   | 'sandboxError'
   | 'clientError'
   | 'systemError'
@@ -42,17 +42,23 @@ export type InputAmountEventPayload = {
   unit: '$' | '%'
 }
 
-export type InputAllocationEventPayload = {
-  action: string
-  allocation?: {
-    type: string
-    value?: number
-    target?: {
-      accountName: string
-      accountType: string
-    }
-  }
-}
+type _PartialSwitch<T> = { action: 'partial_switch'; allocation: T }
+type InputAllocationPercentage = _PartialSwitch<{
+  type: 'percentage'
+  value: number
+}>
+type InputAllocationAmount = _PartialSwitch<{
+  type: 'amount'
+  value: number
+}>
+type InputAllocationRemainder = _PartialSwitch<{
+  type: 'remainder'
+}>
+export type InputAllocationEventPayload =
+  | { action: 'full_switch' }
+  | InputAllocationRemainder
+  | InputAllocationAmount
+  | InputAllocationPercentage
 
 export type CardSwitchBeginEventPayload = {}
 
@@ -92,7 +98,7 @@ export type SuccessEventPayload = {
 }
 
 export type ErrorEventPayload = {
-  type: ErrorType
+  type: PinwheelErrorType
   code: string
   message: string
   pendingRetry: boolean

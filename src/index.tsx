@@ -8,6 +8,14 @@ export const SDK_VERSION: SemverObject = { major, minor, patch }
 
 const { url: PORTAL_URL, integrity: PORTAL_INTEGRITY } = portalConfig
 
+export type LinkResult = {
+  accountId: string
+  job: string
+  params: {
+    amount?: { value: number; unit: '%' | '$' }
+  }
+}
+
 export type SemverObject = {
   major: number
   minor: number

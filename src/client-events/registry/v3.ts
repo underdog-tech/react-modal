@@ -1,6 +1,9 @@
+/* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/ban-types */
 import type { AdditionsType, ModificationsType, RemovalsType } from '../utils'
 import type { EventPayloadMap as EventPayloadMapV2, LinkApiJob } from './v2.3'
+
+import { InputAllocationEventPayload as InputAllocationEventPayload2_3 } from './v2.3'
 
 /*
  * Export all the types from V3 and we override whatever changes
@@ -14,19 +17,11 @@ export type SuccessEventPayload = {
   params?: InputAllocationEventPayload
 }
 
-export type InputAllocationEventPayload = {
-  action: string | null
-  allocation?: {
-    type: string
-    value?: number
-    target?: {
-      accountName: string
-      accountType: string
-    }
-  }
-}
+export type InputAllocationEventPayload =
+  | { action: null }
+  | InputAllocationEventPayload2_3
 
-type EventPayloadAdditions = {}
+type EventPayloadAdditions = EmptyPayloadObject
 
 type EventPayloadModifications = {
   input_allocation: InputAllocationEventPayload
