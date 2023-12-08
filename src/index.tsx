@@ -1,6 +1,7 @@
 import * as React from 'react'
 import packageJson from '../package.json'
 import portalConfig from '../portal.config.json'
+import { LinkOptions } from './client-events/client'
 
 const [major, minor, patch] = packageJson.version.split('.').map(Number)
 export const SDK_VERSION: SemverObject = { major, minor, patch }
@@ -41,7 +42,7 @@ export type ModalStylingParams = {
 type PinwheelPublicOpenOptions = {
   modalStyling?: ModalStylingParams
   ariaHideDocumentContent?: boolean
-}
+} & LinkOptions
 
 interface PinwheelPrivateOpenOptions {
   _versionOverride?: SemverObject
