@@ -23,8 +23,8 @@ This new major version bump introduces an updated API to support partner-based s
 <!-- - Removed `ScreenTransition` export. Use `ScreenTransitionEventPayload` instead. -->
 <!-- - Removed `InputAllocation` export. Use `ScreenTransitionEventPayload` instead. -->
 - Removed `EmptyPayloadObject` export.
-- Removed `Error` export. `Error` was marked as deprecated in version 2. Use `ErrorEventPayload` instead.
-- Removed `ErrorType` export. `ErrorType` was marked as deprecated in version 2. Use `PinwheelErrorType` instead.
+- Removed `Error` export. Use `ErrorEventPayload` instead. (`Error` was marked as deprecated in version 2.)
+- Removed `ErrorType` export. Use `PinwheelErrorType` instead. (`ErrorType` was marked as deprecated in version 2.)
 - Removed `input_amount` event. Use `input_allocation` even instead.
 
 
