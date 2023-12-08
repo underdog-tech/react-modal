@@ -21,6 +21,11 @@ export type InputAllocationEventPayload =
   | { action: null }
   | InputAllocationEventPayload2_3
 
+/**
+ * @deprecated - Use `InputAllocationEventPayload` instead.
+ */
+export type InputAllocation = InputAllocationEventPayload
+
 type EventPayloadAdditions = {}
 
 type EventPayloadModifications = {

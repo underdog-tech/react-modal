@@ -19,10 +19,10 @@ This new major version bump introduces an updated API to support partner-based s
 #### Removed
 - Removed `LinkResult` export. This was the old `success` event payload. The new payload has the same format as the newly exported `SuccessEventPayload`.
 - Removed `Error` export. Use `ErrorEventPayload` instead.
-- Removed `PinwheelError` export. Use `ErrorEventPayload` instead.
+<!-- - Removed `PinwheelError` export. Use `ErrorEventPayload` instead. -->
 - Removed `EventPayload` export. The event handler function will now be implicitly typed.
-- Removed `ScreenTransition` export. Use `ScreenTransitionEventPayload` instead.
-- Removed `InputAllocation` export. Use `ScreenTransitionEventPayload` instead.
+<!-- - Removed `ScreenTransition` export. Use `ScreenTransitionEventPayload` instead. -->
+<!-- - Removed `InputAllocation` export. Use `ScreenTransitionEventPayload` instead. -->
 - Removed `EmptyPayloadObject` export.
 - Removed `ErrorType` export. Use `PinwheelErrorType` instead.
 - Removed `input_amount` event. Use `input_allocation` even instead.

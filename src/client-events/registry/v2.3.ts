@@ -60,6 +60,11 @@ export type InputAllocationEventPayload =
   | InputAllocationAmount
   | InputAllocationPercentage
 
+/**
+ * @deprecated - Use `InputAllocationEventPayload` instead.
+ */
+export type InputAllocation = InputAllocationEventPayload
+
 export type CardSwitchBeginEventPayload = {}
 
 export type DocUploadsBeginEventPayload = {
@@ -86,6 +91,11 @@ export type ScreenTransitionEventPayload = {
   selectedPlatformName?: string
 }
 
+/**
+ * @deprecated - Use `ScreenTransitionEventPayload` instead.
+ */
+export type ScreenTransition = ScreenTransitionEventPayload
+
 export type ExitEventPayload = {}
 
 export type SuccessEventPayload = {
@@ -103,6 +113,11 @@ export type ErrorEventPayload = {
   message: string
   pendingRetry: boolean
 }
+
+/**
+ * @deprecated - Use `ErrorEventPayload` instead.
+ */
+export type PinwheelError = ErrorEventPayload
 
 type EventPayloadAdditions = {
   open: OpenEventPayload
