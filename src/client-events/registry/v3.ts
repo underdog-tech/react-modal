@@ -21,7 +21,7 @@ export type InputAllocationEventPayload =
   | { action: null }
   | InputAllocationEventPayload2_3
 
-type EventPayloadAdditions = EmptyPayloadObject
+type EventPayloadAdditions = {}
 
 type EventPayloadModifications = {
   input_allocation: InputAllocationEventPayload
