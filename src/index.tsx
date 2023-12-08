@@ -5,7 +5,7 @@ import { LinkOptions } from './client-events/client'
 
 export * from './client-events/registry/v3'
 
-const [major, minor, patch] = packageJson.version.split('.').map(Number)
+const [major, minor, patch] = packageJson.version.split(/\.|-/).map(Number)
 export const SDK_VERSION: SemverObject = { major, minor, patch }
 
 const { url: PORTAL_URL, integrity: PORTAL_INTEGRITY } = portalConfig
