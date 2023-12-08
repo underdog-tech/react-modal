@@ -3,6 +3,8 @@ import packageJson from '../package.json'
 import portalConfig from '../portal.config.json'
 import { LinkOptions } from './client-events/client'
 
+export * from './client-events/registry/v3'
+
 const [major, minor, patch] = packageJson.version.split('.').map(Number)
 export const SDK_VERSION: SemverObject = { major, minor, patch }
 
