@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import type { AdditionsType, ModificationsType, RemovalsType } from '../utils'
 
-export type ErrorType =
+export type PinwheelErrorType =
   | 'sandboxError'
   | 'clientError'
   | 'systemError'
@@ -42,17 +42,28 @@ export type InputAmountEventPayload = {
   unit: '$' | '%'
 }
 
-export type InputAllocationEventPayload = {
-  action: string
-  allocation?: {
-    type: string
-    value?: number
-    target?: {
-      accountName: string
-      accountType: string
-    }
-  }
-}
+type _PartialSwitch<T> = { action: 'partial_switch'; allocation: T }
+type InputAllocationPercentage = _PartialSwitch<{
+  type: 'percentage'
+  value: number
+}>
+type InputAllocationAmount = _PartialSwitch<{
+  type: 'amount'
+  value: number
+}>
+type InputAllocationRemainder = _PartialSwitch<{
+  type: 'remainder'
+}>
+export type InputAllocationEventPayload =
+  | { action: 'full_switch' }
+  | InputAllocationRemainder
+  | InputAllocationAmount
+  | InputAllocationPercentage
+
+/**
+ * @deprecated - Use `InputAllocationEventPayload` instead.
+ */
+export type InputAllocation = InputAllocationEventPayload
 
 export type CardSwitchBeginEventPayload = {}
 
@@ -80,7 +91,12 @@ export type ScreenTransitionEventPayload = {
   selectedPlatformName?: string
 }
 
-export type ExitEventPayload = {}
+/**
+ * @deprecated - Use `ScreenTransitionEventPayload` instead.
+ */
+export type ScreenTransition = ScreenTransitionEventPayload
+
+export type ExitEventPayload = Record<string, never>
 
 export type SuccessEventPayload = {
   accountId: string
@@ -92,11 +108,16 @@ export type SuccessEventPayload = {
 }
 
 export type ErrorEventPayload = {
-  type: ErrorType
+  type: PinwheelErrorType
   code: string
   message: string
   pendingRetry: boolean
 }
+
+/**
+ * @deprecated - Use `ErrorEventPayload` instead.
+ */
+export type PinwheelError = ErrorEventPayload
 
 type EventPayloadAdditions = {
   open: OpenEventPayload
@@ -114,7 +135,7 @@ type EventPayloadAdditions = {
   dd_form_create: DdFormCreateEventPayload
   dd_form_download: DdFormDownloadEventPayload
   screen_transition: ScreenTransitionEventPayload
-  exit: ExitEventPayload
+  exit: ErrorEventPayload | ExitEventPayload
   success: SuccessEventPayload
   error: ErrorEventPayload
 }
