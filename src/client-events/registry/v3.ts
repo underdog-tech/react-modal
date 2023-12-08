@@ -18,7 +18,7 @@ export type SuccessEventPayload = {
 }
 
 export type InputAllocationEventPayload =
-  | { action: null }
+  | { action: null; allocation: null }
   | InputAllocationEventPayload2_3
 
 /**
