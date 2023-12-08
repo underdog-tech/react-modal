@@ -24,7 +24,7 @@ This new major version bump introduces an updated API to support partner-based s
 - Removed `ScreenTransition` export. Use `ScreenTransitionEventPayload` instead.
 - Removed `InputAllocation` export. Use `ScreenTransitionEventPayload` instead.
 - Removed `EmptyPayloadObject` export.
-- Remove `ErrorType` export. Use `PinwheelErrorType` instead.
+- Removed `ErrorType` export. Use `PinwheelErrorType` instead.
 - Removed `input_amount` event. Use `input_allocation` even instead.
 
 
