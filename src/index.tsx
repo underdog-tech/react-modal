@@ -41,8 +41,13 @@ export type ModalStylingParams = {
   height?: CssSize
 }
 
+export type OverlayStylingParams = {
+  backgroundColor?: string
+}
+
 type PinwheelPublicOpenOptions = {
   modalStyling?: ModalStylingParams
+  overlayStyling?: OverlayStylingParams
   ariaHideDocumentContent?: boolean
 } & LinkOptions
 
