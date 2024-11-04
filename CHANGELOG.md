@@ -4,11 +4,33 @@ All notable changes to this project will be documented in this file.
 
 ## 3.0.x Releases
 
-- `3.0.x` Releases - [3.0.0](#300)
-
-### [3.0.0](https://github.com/underdog-tech/pinwheel-ios-sdk/releases/tag/3.0.0)
+- `3.0.x` Releases - [3.0.0](#300) | [3.0.1](#301) | [3.0.2](#302) | [3.0.3](#303)
 
 ---
+
+### 3.0.3
+
+#### Security
+
+- Update dependencies to address security vulnerabilities
+
+---
+
+### 3.0.2
+
+#### Security
+
+- Update dependencies to address security vulnerabilities
+
+### 3.0.1
+
+#### Added
+
+- Enable passing in `overlayStyling` as a prop.
+
+---
+
+### 3.0.0
 
 This new major version bump introduces an updated API to support partner-based switches.
 
