@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
 
 ### 3.0.3
 
+#### Updated
+
+- Fix the casing of the `screenName` field in the exported `ScreenTransitionEventPayload` event payload type.
+
 #### Security
 
 - Update dependencies to address security vulnerabilities
