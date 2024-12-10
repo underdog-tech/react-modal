@@ -1,6 +1,6 @@
 {
   "name": "@pinwheel/react-modal",
-  "version": "3.0.3",
+  "version": "3.0.4-beta",
   "description": "React package for Pinwheel modal",
   "author": "roscioli",
   "license": "MIT",
