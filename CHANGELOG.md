@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.x Releases
+
+- `3.1.x` Releases - [3.1.0](#310)
+
+---
+
+### 3.1.0
+
+#### Added
+
+- Added prop `useDarkMode` for launching the Link modal in dark mode.
+
+---
+
 ## 3.0.x Releases
 
 - `3.0.x` Releases - [3.0.0](#300) | [3.0.1](#301) | [3.0.2](#302) | [3.0.3](#303) | [3.0.4](#304)
