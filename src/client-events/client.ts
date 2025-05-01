@@ -8,6 +8,7 @@ import type {
 
 export type LinkOptions = {
   linkToken: string
+  useDarkMode?: boolean
   onLogin?: (payload: LoginEventPayload) => void
   onLoginAttempt?: (payload: LoginAttemptEventPayload) => void
   onSuccess?: (payload: SuccessEventPayload) => void
