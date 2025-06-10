@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.2.x Releases
+
+- `3.2.x` Releases - [3.2.0](#320)
+
+---
+
+### 3.2.0
+
+#### Added
+
+- Added React 19 support.
+
+---
+
 ## 3.1.x Releases
 
 - `3.1.x` Releases - [3.1.0](#310)
