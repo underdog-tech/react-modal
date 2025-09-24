@@ -1,6 +1,6 @@
 {
   "name": "@pinwheel/react-modal",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "React package for Pinwheel modal",
   "author": "roscioli",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
-    "@pinwheel/eslint-config": "^1.0.0-alpha.2",
+    "@pinwheel/eslint-config": "^1.0.1",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-typescript": "^11.1.2",
     "@testing-library/jest-dom": "^5.16.5",
