@@ -91,6 +91,20 @@ export type ScreenTransitionEventPayload = {
   selectedPlatformName?: string
 }
 
+export type BillSwitchPayload = {
+  platformId: string
+  platformName: string
+  isGuidedSwitch: boolean
+  frequency: string
+  nextPaymentDate: string
+  amountCents: number
+}
+
+export type ExternalAccountConnectedPayload = {
+  institutionName: string
+  accountName: string
+}
+
 /**
  * @deprecated - Use `ScreenTransitionEventPayload` instead.
  */
@@ -138,6 +152,10 @@ type EventPayloadAdditions = {
   exit: ErrorEventPayload | ExitEventPayload
   success: SuccessEventPayload
   error: ErrorEventPayload
+  bill_switch_success: BillSwitchPayload
+  bill_removed: BillSwitchPayload
+  external_account_connected: ExternalAccountConnectedPayload
+  merchant_login_success: LoginEventPayload
 }
 
 type EventPayloadModifications = {}
