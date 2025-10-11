@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.3.x Releases
+
+- `3.3.x` Releases - [3.3.0](#330)
+
+### 3.3.0
+
+#### Added
+
+- Added Bill Switch client events: [Docs](https://docs.pinwheelapi.com/public/docs/link-events#bill-switch-events)
+
 ## 3.2.x Releases
 
 - `3.2.x` Releases - [3.2.0](#320)
@@ -77,20 +87,21 @@ All notable changes to this project will be documented in this file.
 This new major version bump introduces an updated API to support partner-based switches.
 
 #### Changed
+
 - The `action` field in `input_allocation` event is now optional.
 - The `params` field in the `success` event uses the `input_allocation` schema with fields `action` and `allocation`.
 
 #### Removed
+
 - Removed `LinkResult` export. This was the old `success` event payload. The new payload has the same format as the newly exported `SuccessEventPayload`.
 <!-- - Removed `PinwheelError` export. Use `ErrorEventPayload` instead. -->
 - Removed `EventPayload` export. The event handler function will now be implicitly typed.
-<!-- - Removed `ScreenTransition` export. Use `ScreenTransitionEventPayload` instead. -->
-<!-- - Removed `InputAllocation` export. Use `ScreenTransitionEventPayload` instead. -->
+  <!-- - Removed `ScreenTransition` export. Use `ScreenTransitionEventPayload` instead. -->
+  <!-- - Removed `InputAllocation` export. Use `ScreenTransitionEventPayload` instead. -->
 - Removed `EmptyPayloadObject` export.
 - Removed `Error` export. Use `ErrorEventPayload` instead. (`Error` was marked as deprecated in version 2.)
 - Removed `ErrorType` export. Use `PinwheelErrorType` instead. (`ErrorType` was marked as deprecated in version 2.)
 - Removed `input_amount` event. Use `input_allocation` even instead.
-
 
 ## 2.4.x Releases
 
