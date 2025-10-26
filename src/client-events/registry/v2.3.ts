@@ -94,7 +94,7 @@ export type ScreenTransitionEventPayload = {
 export type BillSwitchPayload = {
   platformId: string
   platformName: string
-  isGuidedSwitch: boolean
+  isIntegratedSwitch: boolean
   frequency: string
   nextPaymentDate: string
   amountCents: number
