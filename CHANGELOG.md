@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.4.x Releases
+
+- `3.4.x` Releases - [3.4.0](#340)
+
+### 3.4.0
+
+#### Updated
+
+- Removed the `isGuidedSwitch` field and added the `isIntegratedSwitch` field in Bill Switch events.
+
 ## 3.3.x Releases
 
 - `3.3.x` Releases - [3.3.0](#330)
