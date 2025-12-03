@@ -31,7 +31,8 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.PINWHEEL_API_KEY': JSON.stringify(process.env.PINWHEEL_API_KEY || '')
+      'process.env.PINWHEEL_API_KEY': JSON.stringify(process.env.PINWHEEL_API_KEY || ''),
+      'process.env.PINWHEEL_API_URL': JSON.stringify(process.env.PINWHEEL_API_URL || 'https://sandbox.getpinwheel.com')
     })
   ],
   devServer: {
