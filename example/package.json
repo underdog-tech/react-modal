@@ -8,6 +8,7 @@
     "test": "../node_modules/.bin/jest"
   },
   "dependencies": {
+    "@pinwheel/react-modal": "file:..",
     "@testing-library/jest-dom": "file:../node_modules/@testing-library/jest-dom",
     "@testing-library/react": "file:../node_modules/@testing-library/react",
     "@testing-library/user-event": "file:../node_modules/@testing-library/user-event",
@@ -15,16 +16,16 @@
     "@types/node": "file:../node_modules/@types/node",
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
+    "css-loader": "file:../node_modules/css-loader",
+    "dotenv": "^17.2.3",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
-    "typescript": "file:../node_modules/typescript",
-    "webpack-dev-server": "file:../node_modules/webpack-dev-server",
-    "webpack-cli": "file:../node_modules/webpack-cli",
-    "webpack": "file:../node_modules/webpack",
-    "css-loader": "file:../node_modules/css-loader",
     "style-loader": "file:../node_modules/style-loader",
     "ts-loader": "file:../node_modules/ts-loader",
-    "@pinwheel/react-modal": "file:.."
+    "typescript": "file:../node_modules/typescript",
+    "webpack": "file:../node_modules/webpack",
+    "webpack-cli": "file:../node_modules/webpack-cli",
+    "webpack-dev-server": "file:../node_modules/webpack-dev-server"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
