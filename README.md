@@ -16,11 +16,24 @@ npm install --save @pinwheel/react-modal
 import PinwheelModal from '@pinwheel/react-modal'
 
 const App = () => {
-  return <PinwheelModal
-    open={true}
-    linkToken={token}
-    onEvent={console.log}
-  />
+  return <PinwheelModal open={true} linkToken={token} onEvent={console.log} />
+}
+```
+
+In order to utilize the pinwheel iframe with the security policies enforced. (Recommended for production)
+
+```jsx
+import PinwheelModal from '@pinwheel/react-modal'
+
+const App = () => {
+  return (
+    <PinwheelModal
+      open={true}
+      useSecureOrigin
+      linkToken={token}
+      onEvent={console.log}
+    />
+  )
 }
 ```
 
@@ -32,7 +45,7 @@ Please consult [our docs](https://docs.pinwheelapi.com/public/docs/react) for mo
 
 You may want to explore the usage of the modal locally.
 
-Start by going to the [developer dashboard](https://developer.getpinwheel.com/test-console) to create a token. Copy the token string. Then
+Start by going to the [customer dashboard](https://dashboard.getpinwheel.com/test-console) to create a token. Copy the token string. Then
 
 ```sh
 # Build the @pinwheel/react-modal package

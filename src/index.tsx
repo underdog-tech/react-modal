@@ -49,6 +49,7 @@ type PinwheelPublicOpenOptions = {
   modalStyling?: ModalStylingParams
   overlayStyling?: OverlayStylingParams
   ariaHideDocumentContent?: boolean
+  useSecureOrigin?: boolean
 } & LinkOptions
 
 interface PinwheelPrivateOpenOptions {
@@ -66,6 +67,7 @@ declare let Pinwheel: {
 
 export type PinwheelModalProps = PinwheelPublicOpenOptions & {
   open?: boolean
+  useSecureOrigin?: boolean
   _srcUrl?: string
 }
 
@@ -123,6 +125,7 @@ const PinwheelModal = (allProps: PinwheelModalProps) => {
       Pinwheel.open({
         _versionOverride: SDK_VERSION,
         _sdkOverride: _sdkOverride || 'react',
+        useSecureOrigin: props.useSecureOrigin || false,
         ...props,
         _modalSessionIdOverride
       })

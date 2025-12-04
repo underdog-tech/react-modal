@@ -1,4 +1,6 @@
 const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+const webpack = require('webpack');
 
 module.exports = {
   mode: "development",
@@ -13,6 +15,9 @@ module.exports = {
      ".js": [".js", ".ts"],
      ".cjs": [".cjs", ".cts"],
      ".mjs": [".mjs", ".mts"]
+    },
+    alias: {
+      "@pinwheel/react-modal": path.resolve(__dirname, "../dist")
     }
   },
   module: {
@@ -24,6 +29,12 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.PINWHEEL_API_KEY': JSON.stringify(process.env.PINWHEEL_API_KEY || ''),
+      'process.env.PINWHEEL_API_URL': JSON.stringify(process.env.PINWHEEL_API_URL || 'https://sandbox.getpinwheel.com')
+    })
+  ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
