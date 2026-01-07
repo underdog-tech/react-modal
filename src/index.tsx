@@ -71,7 +71,11 @@ export type PinwheelModalProps = PinwheelPublicOpenOptions & {
   _srcUrl?: string
 }
 
-const addScriptTag = (loadCb: () => void, overrideUrl?: string) => {
+const addScriptTag = (
+  loadCb: () => void,
+  overrideUrl?: string,
+  useSecureOrigin?: boolean
+) => {
   const tag = document.createElement('script')
   tag.async = true
   tag.type = 'application/javascript'
@@ -80,7 +84,9 @@ const addScriptTag = (loadCb: () => void, overrideUrl?: string) => {
   } else {
     tag.crossOrigin = 'anonymous'
     tag.integrity = PORTAL_INTEGRITY
-    tag.src = PORTAL_URL
+    const queryParams = ['sandbox=true']
+    if (useSecureOrigin) queryParams.push('useSecureOrigin=true')
+    tag.src = `${PORTAL_URL}?${queryParams.join('&')}`
   }
   document.body.appendChild(tag)
 
@@ -109,9 +115,13 @@ const PinwheelModal = (allProps: PinwheelModalProps) => {
     const els = document.querySelectorAll('.pinwheel-portal')
     els.forEach((e) => e.parentNode?.removeChild(e))
 
-    const newTag = addScriptTag(() => setLoaded(true), _srcUrl)
+    const newTag = addScriptTag(
+      () => setLoaded(true),
+      _srcUrl,
+      props.useSecureOrigin
+    )
     setTag(newTag)
-  }, [_srcUrl, setLoaded])
+  }, [_srcUrl, props.useSecureOrigin, setLoaded])
 
   React.useEffect(() => {
     if (tag && tag.parentNode) tag.parentNode.removeChild(tag)
@@ -125,7 +135,6 @@ const PinwheelModal = (allProps: PinwheelModalProps) => {
       Pinwheel.open({
         _versionOverride: SDK_VERSION,
         _sdkOverride: _sdkOverride || 'react',
-        useSecureOrigin: props.useSecureOrigin || false,
         ...props,
         _modalSessionIdOverride
       })
