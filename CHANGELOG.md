@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.0.x Releases
+
+- `4.0.x` Releases - [4.0.0](#400)
+
+### 4.0.0
+
+#### Removed
+
+- Removed deprecated type aliases for client events `InputAllocation` and `ScreenTransition`. Use their base types `InputAllocationEventPayload` and `ScreenTransitionEventPayload` instead.
+
+#### Added
+
+- Adds new client events for Bill Manager product:
+  - `bill_cancel_success`, `bill_cancel_failure` (`BillSwitchEventPayload`).
+  - `calendar_sync` (`CalendarSyncEventPayload`).
+  - `recurring_charge_added`, `recurring_charge_edited`, `recurring_charge_marked_inactive`, `recurring_charge_removed` (`RecurringChargeEventPayload`).
+- Adds new client events for Bill Switch product:
+  - `bill_switch_platforms_added`, `bill_switch_platforms_removed` (`BillSwitchPlatformsAddedEventPayload`).
+- Adds bill switch failure event (for both Bill Switch and Bill Manager products): `bill_switch_failure` (`BillSwitchEventPayload`).
+
+#### Modified
+
+- Standardized payload types for existing bill switch events:
+  - `bill_switch_success`, `bill_removed` (`BillSwitchEventPayload`).
+  - Renamed `ExternalAccountConnectedPayload` to `ExternalAccountConnectedEventPayload` to maintain consistency with other event payload type names.
+
+## 3.5.x Releases
+
+- `3.5.x` Releases - [3.5.0](#350) | [3.5.1](#351)
+
+### 3.5.0
+
+#### Added
+
+- Adds 'useSecureOrigin' prop to tell the SDK to use Pinwheel's CSP for the Pinwheel web app.
+
+### 3.5.1
+
+#### Updated
+
+- Updates 'useSecureOrigin' to apply directly to Portal URL.
+
 ## 3.4.x Releases
 
 - `3.4.x` Releases - [3.4.0](#340)
