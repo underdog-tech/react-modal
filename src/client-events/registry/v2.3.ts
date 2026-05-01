@@ -16,6 +16,12 @@ export type LinkApiJob = 'login' | 'direct_deposit_switch' | 'card_switch'
 
 export type OpenEventPayload = {}
 
+export type CustomerTermsAcceptedEventPayload = {}
+
+export type UserActivatedEventPayload = {
+  solutionName: string
+}
+
 export type SelectEmployerEventPayload = {
   selectedEmployerId: string
   selectedEmployerName: string
@@ -60,11 +66,6 @@ export type InputAllocationEventPayload =
   | InputAllocationAmount
   | InputAllocationPercentage
 
-/**
- * @deprecated - Use `InputAllocationEventPayload` instead.
- */
-export type InputAllocation = InputAllocationEventPayload
-
 export type CardSwitchBeginEventPayload = {}
 
 export type DocUploadsBeginEventPayload = {
@@ -91,24 +92,33 @@ export type ScreenTransitionEventPayload = {
   selectedPlatformName?: string
 }
 
-export type BillSwitchPayload = {
+type BillMetadata = {
   platformId: string
   platformName: string
-  isIntegratedSwitch: boolean
   frequency: string
   nextPaymentDate: string
   amountCents: number
 }
 
-export type ExternalAccountConnectedPayload = {
+type BillActionBase = {
+  isIntegratedSwitch: boolean
+  accountId?: string
+}
+
+export type BillSwitchEventPayload = BillActionBase & BillMetadata
+
+export type RecurringChargeEventPayload = BillMetadata
+
+export type ExternalAccountConnectedEventPayload = {
   institutionName: string
   accountName: string
 }
 
-/**
- * @deprecated - Use `ScreenTransitionEventPayload` instead.
- */
-export type ScreenTransition = ScreenTransitionEventPayload
+export type BillSwitchPlatformsAddedEventPayload = {
+  platforms: { id: string; name: string }[]
+}
+
+export type CalendarSyncEventPayload = { calendarType: 'google' | 'outlook' }
 
 export type ExitEventPayload = Record<string, never>
 
@@ -152,10 +162,22 @@ type EventPayloadAdditions = {
   exit: ErrorEventPayload | ExitEventPayload
   success: SuccessEventPayload
   error: ErrorEventPayload
-  bill_switch_success: BillSwitchPayload
-  bill_removed: BillSwitchPayload
-  external_account_connected: ExternalAccountConnectedPayload
+  bill_switch_success: BillSwitchEventPayload
+  bill_switch_failure: BillSwitchEventPayload
+  bill_removed: BillSwitchEventPayload
+  external_account_connected: ExternalAccountConnectedEventPayload
   merchant_login_success: LoginEventPayload
+  bill_switch_platforms_added: BillSwitchPlatformsAddedEventPayload
+  bill_switch_platforms_removed: BillSwitchPlatformsAddedEventPayload
+  bill_cancel_success: BillSwitchEventPayload
+  bill_cancel_failure: BillSwitchEventPayload
+  calendar_sync: CalendarSyncEventPayload
+  recurring_charge_removed: RecurringChargeEventPayload
+  recurring_charge_marked_inactive: RecurringChargeEventPayload
+  recurring_charge_edited: RecurringChargeEventPayload
+  recurring_charge_added: RecurringChargeEventPayload
+  customer_terms_accepted: CustomerTermsAcceptedEventPayload
+  user_activated: UserActivatedEventPayload
 }
 
 type EventPayloadModifications = {}
