@@ -107,7 +107,12 @@ type BillActionBase = {
 
 export type BillSwitchEventPayload = BillActionBase & BillMetadata
 
-export type RecurringChargeEventPayload = BillMetadata
+export type BillSwitchPayload = BillActionBase &
+  BillMetadata & {
+    isGuidedSwitch: boolean
+  }
+
+export type BillEventPayload = BillMetadata
 
 export type ExternalAccountConnectedEventPayload = {
   institutionName: string
@@ -162,9 +167,11 @@ type EventPayloadAdditions = {
   exit: ErrorEventPayload | ExitEventPayload
   success: SuccessEventPayload
   error: ErrorEventPayload
-  bill_switch_success: BillSwitchEventPayload
+  // @deprecated - v4 event interface uses BillSwitchEventPayload
+  bill_switch_success: BillSwitchPayload
   bill_switch_failure: BillSwitchEventPayload
-  bill_removed: BillSwitchEventPayload
+  // @deprecated - v4 event interface uses BillEventPayload
+  bill_removed: BillSwitchPayload
   external_account_connected: ExternalAccountConnectedEventPayload
   merchant_login_success: LoginEventPayload
   bill_switch_platforms_added: BillSwitchPlatformsAddedEventPayload
@@ -172,10 +179,9 @@ type EventPayloadAdditions = {
   bill_cancel_success: BillSwitchEventPayload
   bill_cancel_failure: BillSwitchEventPayload
   calendar_sync: CalendarSyncEventPayload
-  recurring_charge_removed: RecurringChargeEventPayload
-  recurring_charge_marked_inactive: RecurringChargeEventPayload
-  recurring_charge_edited: RecurringChargeEventPayload
-  recurring_charge_added: RecurringChargeEventPayload
+  bill_marked_inactive: BillEventPayload
+  bill_edited: BillEventPayload
+  bill_added: BillEventPayload
   customer_terms_accepted: CustomerTermsAcceptedEventPayload
   user_activated: UserActivatedEventPayload
 }

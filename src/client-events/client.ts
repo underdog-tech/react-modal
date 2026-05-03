@@ -1,14 +1,13 @@
 import type {
-  LoginEventPayload,
-  SuccessEventPayload,
-  EventHandler,
   ErrorEventPayload,
-  LoginAttemptEventPayload
-} from './registry/v3'
+  EventHandler,
+  LoginAttemptEventPayload,
+  LoginEventPayload,
+  SuccessEventPayload
+} from './registry/v4'
 
 export type LinkOptions = {
   linkToken: string
-  useDarkMode?: boolean
   onLogin?: (payload: LoginEventPayload) => void
   onLoginAttempt?: (payload: LoginAttemptEventPayload) => void
   onSuccess?: (payload: SuccessEventPayload) => void
