@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## 4.0.x Releases
 
-- `4.0.x` Releases - [4.0.0](#400)
+- `4.0.x` Releases - [4.0.1](#401)
 
-### 4.0.0
+### 4.0.1
 
 #### Removed
 
@@ -17,7 +17,7 @@ All notable changes to this project will be documented in this file.
 - Adds new client events for Bill Manager product:
   - `bill_cancel_success`, `bill_cancel_failure` (`BillSwitchEventPayload`).
   - `calendar_sync` (`CalendarSyncEventPayload`).
-  - `recurring_charge_added`, `recurring_charge_edited`, `recurring_charge_marked_inactive`, `recurring_charge_removed` (`RecurringChargeEventPayload`).
+  - `bill_added`, `bill_edited`, `bill_marked_inactive` (`BillEventPayload`).
 - Adds new client events for Bill Switch product:
   - `bill_switch_platforms_added`, `bill_switch_platforms_removed` (`BillSwitchPlatformsAddedEventPayload`).
 - Adds bill switch failure event (for both Bill Switch and Bill Manager products): `bill_switch_failure` (`BillSwitchEventPayload`).
@@ -28,7 +28,8 @@ All notable changes to this project will be documented in this file.
 #### Modified
 
 - Standardized payload types for existing bill switch events:
-  - `bill_switch_success`, `bill_removed` (`BillSwitchEventPayload`).
+  - `bill_switch_success` now uses `BillSwitchEventPayload` in v4 which removes the `isGuidedSwitch` payload key.
+  - `bill_removed` now uses `BillEventPayload` in v4 which removes the `isGuidedSwitch` and `isIntegratedSwitch` payload keys and keeps it inline with the other bill events.
   - Renamed `ExternalAccountConnectedPayload` to `ExternalAccountConnectedEventPayload` to maintain consistency with other event payload type names.
 
 ## 3.5.x Releases

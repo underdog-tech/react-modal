@@ -49,6 +49,7 @@ type PinwheelPublicOpenOptions = {
   modalStyling?: ModalStylingParams
   overlayStyling?: OverlayStylingParams
   ariaHideDocumentContent?: boolean
+  useDarkMode?: boolean
   useSecureOrigin?: boolean
 } & LinkOptions
 
